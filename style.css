@@ -35,7 +35,7 @@ html {
 	position: relative;
 	height: 100%;
 	width: 100%;
-	background-image: url(img/GMS-Ash-Kit-004-min.jpg);
+	background-image: url(img/drums-2560x1440-min.jpg);
 	background-size: cover;
 	background-position: center;
 	color: aliceblue;
@@ -62,7 +62,10 @@ body {
 	height: 90px;
 	width: 120px;
 	margin: 0 10px;
-	background-color: rgba(0,0,0,0.7);
+	background-color: rgba(0,0,0,0.4);
+	border: 4px solid #000;
+	-webkit-transition:all .07s;
+	transition:all .07s;
 }
 .sound__key {
 	height: 70%;
@@ -71,7 +74,13 @@ body {
 }
 .sound__name {
 	height: 30%;
-	color: #E74C3C;
+	color: #C4F0C5;
 	font-size: 1.2rem;
 	text-transform: uppercase;
+}
+
+.sound--glowing {
+	border-color: #C4F0C5;
+	-webkit-transform: scale(1.2);
+	transform: scale(1.2);
 }

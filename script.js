@@ -25,5 +25,13 @@ function playSound(keyValue) {
 	if (i >= 0) {
 		var audio = new Audio("sounds/" + sounds[i] + ".wav");
 		audio.play();
+		soundButton[i].classList.add("sound--glowing");
 	}
+}
+
+for (var i = 0; i < soundButton.length; i++) {
+	soundButton[i].addEventListener("transitionend", soundFinished);
+}
+function soundFinished(event) {
+	event.target.classList.remove("sound--glowing");
 }
