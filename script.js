@@ -4,8 +4,8 @@ var sounds = ["clap", "hihat", "kick", "openhat", "boom", "ride", "snare", "tom"
 var audio = document.querySelectorAll("audio");
 var soundButton = document.querySelectorAll(".sound");
 
-function createButtonElements(elementClass, elementText, i) {
-	var element = document.createElement("div");
+function createButtonElements(elementClass, elementText, elementType, i) {
+	var element = document.createElement(elementType);
 	element.className = elementClass;
 	element.textContent = elementText;
 	soundButton[i].appendChild(element);
@@ -13,20 +13,20 @@ function createButtonElements(elementClass, elementText, i) {
 
 function playSound(event) {
 	var key = keys.indexOf(event.keyCode);
-	if (key >= 0) {
-		audio[key].currentTime = 0;
-		audio[key].play();
-		soundButton[key].classList.add("sound--glowing");
-	}
+	if (key < 0) return;
+	audio[key].currentTime = 0;
+	audio[key].play();
+	soundButton[key].classList.add("sound--glowing");
 }
 
 function soundFinished(event) {
-	event.target.classList.remove("sound--glowing");
+	if (event.propertyName != "transform") return;
+	this.classList.remove("sound--glowing");
 }
 
 for (var i = 0; i < keys.length; i++) {
-	createButtonElements("sound__key", letters[i], i);
-	createButtonElements("sound__name", sounds[i], i);
+	createButtonElements("sound__key", letters[i], "kbd", i);
+	createButtonElements("sound__name", sounds[i], "span", i);
 }
 
 for (var i = 0; i < soundButton.length; i++) {
